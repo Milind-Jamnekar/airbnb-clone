@@ -6,4 +6,19 @@
   .icon {
     @apply h-6 cursor-pointer;
   }
+
+  .heading {
+    @apply text-2xl font-bold py-3;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
