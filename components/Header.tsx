@@ -16,6 +16,7 @@ function Header() {
           layout="fill"
           objectFit="contain"
           objectPosition="left"
+          alt="Airbnb Logo image"
         />
       </div>
 

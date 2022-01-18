@@ -17,7 +17,12 @@ function SmallCard({
     >
       {/* Left */}
       <div className="relative w-14 h-14">
-        <Image src={img} layout="fill" className="rounded-lg" />
+        <Image
+          src={img}
+          layout="fill"
+          className="rounded-lg"
+          alt="small card image"
+        />
       </div>
 
       {/* Right  */}
