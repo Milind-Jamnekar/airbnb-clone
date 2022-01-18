@@ -16,7 +16,7 @@ function SmallCard({
     transition duration-200 ease-out"
     >
       {/* Left */}
-      <div className="relative w-14 h-14">
+      <div className="relative w-16 h-16 sm:w-14 sm:h-14">
         <Image
           src={img}
           layout="fill"
@@ -26,8 +26,8 @@ function SmallCard({
       </div>
 
       {/* Right  */}
-      <div>
-        <p>{location}</p>
+      <div className="self-start sm:self-center">
+        <p className="font-semibold">{location}</p>
         <p className="text-gray-500">{distance}</p>
       </div>
     </div>
