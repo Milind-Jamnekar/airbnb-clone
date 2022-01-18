@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
+import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
 import { getData } from "../utility/getData";
@@ -60,6 +61,15 @@ export default function Home({
               <MediumCard key={card.img} {...card} />
             ))}
           </div>
+        </section>
+        {/* Large Card Section  */}
+        <section className="my-12">
+          <LargeCard
+            img="https://links.papareact.com/4cj"
+            title="The Greatest outdoor"
+            description="Wishlist curated by Airbnb"
+            buttonText="Get inspired"
+          />
         </section>
       </main>
     </div>
