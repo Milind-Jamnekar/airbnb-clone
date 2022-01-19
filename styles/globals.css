@@ -21,4 +21,8 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .footer-container {
+    @apply space-y-4  text-gray-700;
+  }
 }

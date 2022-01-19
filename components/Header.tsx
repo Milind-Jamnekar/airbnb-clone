@@ -1,14 +1,41 @@
 import Image from "next/image";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+//@ts-ignore
+import { DateRangePicker } from "react-date-range";
 import {
   GlobeAltIcon,
   MenuIcon,
   SearchIcon,
   UserCircleIcon,
+  UserIcon,
 } from "@heroicons/react/outline";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { useState } from "react";
 
 function Header() {
+  const [searchInput, setSearchInput] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [guest, setGuest] = useState(1);
+
+  const handleSelect = (e: any) => {
+    setStartDate(e.selection.startDate);
+    setEndDate(e.selection.endDate);
+  };
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10">
+    <motion.header
+      // layout="size"
+      className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 "
+    >
       {/* Left logo */}
       <div className="relative flex items-center h-6 sm:h-10 cursor-pointer my-auto">
         <Image
@@ -23,8 +50,9 @@ function Header() {
       {/* middle searchbar */}
       <div className=" flex items-center justify-center border-2 rounded-full col-span-2 ">
         <input
-          className="pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow"
+          className="pl-10 xs:pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow"
           type="text"
+          onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Start your search.."
         />
         <SearchIcon className="hidden md:inline-flex md:mx-2 icon bg-red-400 text-white rounded-full p-1 " />
@@ -39,7 +67,40 @@ function Header() {
           <UserCircleIcon className="icon" />
         </div>
       </div>
-    </header>
+      <AnimatePresence>
+        {searchInput && (
+          <motion.div
+            key="datePicker"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            className="flex flex-col mx-auto col-span-4 "
+          >
+            <DateRangePicker
+              ranges={[selectionRange]}
+              date={new Date()}
+              minDate={new Date()}
+              rangeColors={["#fd5b21"]}
+              onChange={handleSelect}
+            />
+            <div className="flex items-center border-b mb-5  font-semibold">
+              <div className="flex-grow text-2xl">
+                <h2>Number of guests:</h2>
+              </div>
+              <UserIcon className="h-5" />
+              <input
+                type="number"
+                name="people"
+                id="people"
+                value={guest}
+                onChange={(e) => setGuest(e.target.value)}
+                className="w-12 pl-2 outline-none text-red-500"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
 

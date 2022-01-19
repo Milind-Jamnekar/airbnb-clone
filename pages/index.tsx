@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
@@ -43,6 +44,7 @@ export default function Home({
       {/* Banner  */}
       <Banner />
 
+      {/* Main body  */}
       <main className="max-w-6xl mx-auto px-8 sm:px-16">
         {/* Small Card Section */}
         <section className="my-6">
@@ -56,7 +58,7 @@ export default function Home({
         {/* Another Section  */}
         <section className="my-6">
           <h2 className="heading">Live Anywhere!</h2>
-          <div className="flex gap-x-5 snap-x overflow-x-scroll snap-mandatory no-scrollbar p-3">
+          <div className="flex gap-x-5 snap-x overflow-x-scroll snap-mandatory no-scrollbar p-5 xs:p-3">
             {cardData.map((card) => (
               <MediumCard key={card.img} {...card} />
             ))}
@@ -72,6 +74,9 @@ export default function Home({
           />
         </section>
       </main>
+
+      {/* Footer  */}
+      <Footer />
     </div>
   );
 }
