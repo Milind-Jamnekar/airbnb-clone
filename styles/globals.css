@@ -25,4 +25,8 @@
   .footer-container {
     @apply space-y-4  text-gray-700;
   }
+
+  .btn {
+    @apply flex-grow py-2 px-4 rounded-xl text-gray-700 border-2;
+  }
 }
