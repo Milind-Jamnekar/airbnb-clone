@@ -13,12 +13,14 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 
 import { ChangeEvent, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 function Header() {
-  const [searchInput, setSearchInput] = useState<String>("");
+  const [searchInput, setSearchInput] = useState<string>("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guest, setGuest] = useState<Number | null>(1);
+  const router = useRouter();
 
   const inputEl = useRef(null);
 
@@ -38,10 +40,7 @@ function Header() {
   };
 
   return (
-    <motion.header
-      // layout="size"
-      className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 "
-    >
+    <header className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 ">
       {/* Left logo */}
       <div className="relative flex items-center h-6 sm:h-10 cursor-pointer my-auto">
         <Image
@@ -50,6 +49,7 @@ function Header() {
           objectFit="contain"
           objectPosition="left"
           alt="Airbnb Logo image"
+          onClick={() => router.push("/")}
         />
       </div>
 
@@ -58,7 +58,8 @@ function Header() {
         <input
           className="pl-10 xs:pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow"
           type="text"
-          ref={inputEl}
+          value={searchInput}
+          // ref={inputEl}
           onChange={handleChange}
           placeholder="Start your search.."
         />
@@ -100,7 +101,7 @@ function Header() {
               <input
                 type="number"
                 name="people"
-                id="people"
+                min={1}
                 value={`${guest}`}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
                   setGuest(parseInt(e.target.value));
@@ -110,7 +111,7 @@ function Header() {
             </div>
             <div className="flex gap-5 mt-2">
               <button
-                onClick={resetInput}
+                onClick={() => setSearchInput("")}
                 className="btn  border-gray-100 hover:bg-gray-100"
               >
                 Cancel
@@ -122,7 +123,7 @@ function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
 
