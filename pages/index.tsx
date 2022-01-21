@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
@@ -6,6 +7,7 @@ import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
+import { page } from "../utility/animation";
 import { getData } from "../utility/getData";
 interface Data {
   img: string;
@@ -32,7 +34,13 @@ type Props = {
 
 export default function Home({ exploredData, cardData }: Props) {
   return (
-    <div className="">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={page}
+      className=""
+    >
       <Head>
         <title>Airbnb Clone</title>
         <link rel="icon" href="/favicon.ico" />
@@ -76,7 +84,7 @@ export default function Home({ exploredData, cardData }: Props) {
 
       {/* Footer  */}
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

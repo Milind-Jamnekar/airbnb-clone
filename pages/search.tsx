@@ -1,7 +1,10 @@
 import { format } from "date-fns";
+import { motion } from "framer-motion";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { page } from "../utility/animation";
 
 function Search() {
   const router = useRouter();
@@ -13,8 +16,20 @@ function Search() {
   const formatedEndDate =
     format(new Date(endDate as string), "dd MMM yyyy") || "";
   const range = `${formatedStartDate} - ${formatedEndDate}`;
+
   return (
-    <div>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={page}
+      className=""
+    >
+      <Head>
+        <title>
+          {location} - {range}
+        </title>
+      </Head>
       <Header placeholder={`${location} | ${range} | ${noOfGuest} Guests`} />
       <main className="flex">
         <section className="flex-grow mt-14 mx-6">
@@ -34,7 +49,7 @@ function Search() {
         </section>
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 
