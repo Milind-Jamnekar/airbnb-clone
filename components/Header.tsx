@@ -12,27 +12,19 @@ import {
 } from "@heroicons/react/outline";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState<String>("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [guest, setGuest] = useState(1);
-
-  console.log("render");
+  const [guest, setGuest] = useState<Number | null>(1);
 
   const inputEl = useRef(null);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSearchInput(e.target.value);
-  };
-
-  const handleSubmit = (e: Event) => {
-    e.preventDefault();
-    setSearchInput(inputEl.current?.value);
-  };
+  const resetInput = () => setSearchInput("");
 
   const handleSelect = (e: any) => {
     setStartDate(e.selection.startDate);
@@ -67,14 +59,13 @@ function Header() {
           className="pl-10 xs:pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow"
           type="text"
           ref={inputEl}
-          onInput={() => setIsOpen(true)}
-          // onChange={handleChange}
+          onChange={handleChange}
           placeholder="Start your search.."
         />
         <SearchIcon className="hidden md:inline-flex md:mx-2 icon bg-red-400 text-white rounded-full p-1 " />
       </div>
-      {/* Right */}
 
+      {/* Right */}
       <div className="flex space-x-3 items-center justify-end text-gray-500">
         <p className="hidden lg:inline cursor-pointer">Become a host</p>
         <GlobeAltIcon className="icon" />
@@ -83,8 +74,10 @@ function Header() {
           <UserCircleIcon className="icon" />
         </div>
       </div>
+
+      {/* Daterange component  */}
       <AnimatePresence>
-        {isOpen && (
+        {searchInput && (
           <motion.div
             key="datePicker"
             initial={{ y: 50, opacity: 0 }}
@@ -108,19 +101,24 @@ function Header() {
                 type="number"
                 name="people"
                 id="people"
-                value={guest}
-                onChange={(e) => setGuest(e.target.value)}
+                value={`${guest}`}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setGuest(parseInt(e.target.value));
+                }}
                 className="w-12 pl-2 outline-none text-red-500"
               />
             </div>
-            <form onSubmit={handleSubmit} className="flex gap-5 mt-2">
-              <button className="btn  border-gray-100 hover:bg-gray-100">
+            <div className="flex gap-5 mt-2">
+              <button
+                onClick={resetInput}
+                className="btn  border-gray-100 hover:bg-gray-100"
+              >
                 Cancel
               </button>
               <button className="btn  border-[#fd5b21] hover:bg-[#fd5b21] hover:text-white">
                 Search
               </button>
-            </form>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
