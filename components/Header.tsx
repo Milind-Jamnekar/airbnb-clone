@@ -54,16 +54,16 @@ function Header() {
       </div>
 
       {/* middle searchbar */}
-      <div className=" flex items-center justify-center border-2 rounded-full col-span-2 ">
+      <div className="flex items-center justify-between border-2 rounded-full col-span-2 ">
         <input
-          className="pl-10 xs:pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow"
+          className="pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow max-w-[200px]"
           type="text"
           value={searchInput}
           // ref={inputEl}
           onChange={handleChange}
           placeholder="Start your search.."
         />
-        <SearchIcon className="hidden md:inline-flex md:mx-2 icon bg-red-400 text-white rounded-full p-1 " />
+        <SearchIcon className="hidden sm:inline-flex sm:mx-2 icon bg-red-400 text-white rounded-full p-1 " />
       </div>
 
       {/* Right */}
