@@ -18,10 +18,7 @@ interface CardData {
   title: string;
 }
 
-export default function Home({
-  exploredData,
-  cardData,
-}: {
+type Props = {
   exploredData: {
     img: string;
     location: string;
@@ -31,7 +28,9 @@ export default function Home({
     img: string;
     title: string;
   }[];
-}) {
+};
+
+export default function Home({ exploredData, cardData }: Props) {
   return (
     <div className="">
       <Head>
