@@ -15,15 +15,24 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChangeEvent, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
-function Header() {
+function Header({ placeholder }: { placeholder?: string }) {
   const [searchInput, setSearchInput] = useState<string>("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [guest, setGuest] = useState<Number | null>(1);
+  const [guest, setGuest] = useState<number>(1);
   const router = useRouter();
 
-  const inputEl = useRef(null);
-
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuest: guest,
+      },
+    });
+  };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSearchInput(e.target.value);
   const resetInput = () => setSearchInput("");
@@ -42,26 +51,27 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 ">
       {/* Left logo */}
-      <div className="relative flex items-center h-6 sm:h-10 cursor-pointer my-auto">
+      <div
+        onClick={() => router.push("/")}
+        className="relative flex items-center h-6 sm:h-10 cursor-pointer my-auto"
+      >
         <Image
           src="https://links.papareact.com/qd3"
           layout="fill"
           objectFit="contain"
           objectPosition="left"
           alt="Airbnb Logo image"
-          onClick={() => router.push("/")}
         />
       </div>
 
       {/* middle searchbar */}
-      <div className="flex items-center justify-between border-2 rounded-full col-span-2 ">
+      <div className="flex items-center justify-between border-2 rounded-full col-span-2 overflow-hidden ">
         <input
-          className="pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow max-w-[200px]"
+          className="pl-5 bg-transparent text-gray-500 placeholder:text-gray-400 outline-none flex-grow max-w-[500px]"
           type="text"
           value={searchInput}
-          // ref={inputEl}
           onChange={handleChange}
-          placeholder="Start your search.."
+          placeholder={placeholder || "Start your search.."}
         />
         <SearchIcon className="hidden sm:inline-flex sm:mx-2 icon bg-red-400 text-white rounded-full p-1 " />
       </div>
@@ -116,7 +126,10 @@ function Header() {
               >
                 Cancel
               </button>
-              <button className="btn  border-[#fd5b21] hover:bg-[#fd5b21] hover:text-white">
+              <button
+                onClick={search}
+                className="btn  border-[#fd5b21] hover:bg-[#fd5b21] hover:text-white"
+              >
                 Search
               </button>
             </div>
