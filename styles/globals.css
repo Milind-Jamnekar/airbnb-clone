@@ -29,4 +29,8 @@
   .btn {
     @apply flex-grow py-2 px-4 rounded-xl text-gray-700 border-2;
   }
+
+  .tag {
+    @apply py-2 px-4 border rounded-full cursor-pointer hover:shadow-md active:bg-gray-100 transition-shadow;
+  }
 }
