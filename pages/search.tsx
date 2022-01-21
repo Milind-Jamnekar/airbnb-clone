@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { page } from "../utility/animation";
@@ -11,12 +12,18 @@ function Search() {
 
   const { location, startDate, endDate, noOfGuest } = router.query;
 
-  const formatedStartDate =
-    format(new Date(startDate as string), "dd MMM yyyy") || "";
-  const formatedEndDate =
-    format(new Date(endDate as string), "dd MMM yyyy") || "";
-  const range = `${formatedStartDate} - ${formatedEndDate}`;
+  let range = "";
 
+  useEffect(() => {
+    if (router && router.query) {
+      console.log(startDate, endDate);
+      const formatedStartDate =
+        format(new Date(startDate as string), "dd MMM yyyy") || "";
+      const formatedEndDate =
+        format(new Date(endDate as string), "dd MMM yyyy") || "";
+      range = `${formatedStartDate} - ${formatedEndDate}`;
+    }
+  }, [router.query]);
   return (
     <motion.div
       initial="initial"
@@ -30,7 +37,7 @@ function Search() {
           {location} - {range}
         </title>
       </Head>
-      <Header placeholder={`${location} | ${range} | ${noOfGuest} Guests`} />
+      <Header placeholder={`${location} | ${noOfGuest} Guests`} />
       <main className="flex">
         <section className="flex-grow mt-14 mx-6">
           <p className="text-sm">

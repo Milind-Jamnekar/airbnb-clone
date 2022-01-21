@@ -12,7 +12,11 @@ import { ChangeEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 import { DatePicker } from "./DatePicker";
 
-function Header({ placeholder }: { placeholder?: string }) {
+type Props = {
+  placeholder?: string;
+};
+
+function Header({ placeholder }: Props) {
   const [searchInput, setSearchInput] = useState<string>("");
 
   const router = useRouter();

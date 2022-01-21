@@ -19,6 +19,7 @@ function LargeCard({
           className="rounded-3xl"
           layout="fill"
           objectFit="cover"
+          alt="Large Card Image"
         />
       </div>
       <div className="absolute top-24 left-10 sm:top-32 sm:left-12 right-0">
