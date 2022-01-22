@@ -25,9 +25,14 @@ function InfoCard({
   lat,
 }: Search) {
   return (
-    <div className="flex py-7 px-4 border-b cursor-pointer hover:opacity-90 hover:shadow-lg transition-all ease-out first:border-t ">
+    <div className="flex py-7 px-4 border-b cursor-pointer hover:opacity-90 hover:shadow-lg transition-all ease-out first:border-t rounded-2xl ">
       <div className="relative w-40 h-24 md:h-52 md:w-80 flex-shrink-0 ">
-        <Image src={img} layout="fill" objectFit="cover" />
+        <Image
+          src={img}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-2xl"
+        />
       </div>
       <div className="flex flex-col flex-grow pl-5 ">
         <div className="flex justify-between">
