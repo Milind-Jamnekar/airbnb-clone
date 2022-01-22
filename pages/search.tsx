@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -73,7 +74,7 @@ function Search({ searchResult }: Props) {
           </div>
 
           {searchResult.map((el) => (
-            <InfoCard {...el} />
+            <InfoCard key={el.img} {...el} />
           ))}
         </section>
       </main>
@@ -95,8 +96,8 @@ export default Search;
 //     lat: 51.472618
 //   },
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const searchResult: Search = await getData("https://links.papareact.com/isz");
 
   return { props: { searchResult } };
-}
+};
