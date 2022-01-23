@@ -10,7 +10,7 @@ import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 import { page } from "../utility/animation";
 import { getData } from "../utility/getData";
-import type { Search } from "../utility/mapCordCreate";
+import type { Search } from "../utility/type";
 
 type Props = {
   searchResult: Search[];

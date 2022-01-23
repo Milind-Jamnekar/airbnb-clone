@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import getCenter from "geolib/es/getCenter";
-import type { Search } from "../utility/mapCordCreate";
+import type { Search } from "../utility/type";
 
 type Viewport = {
   latitude: number | false;
