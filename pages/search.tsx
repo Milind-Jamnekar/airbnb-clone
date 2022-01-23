@@ -7,20 +7,10 @@ import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
 import { page } from "../utility/animation";
 import { getData } from "../utility/getData";
-
-type Search = {
-  img: string;
-  location: string;
-  title: string;
-  description: string;
-  star: number;
-  price: string;
-  total: string;
-  long: number;
-  lat: number;
-};
+import type { Search } from "../utility/mapCordCreate";
 
 type Props = {
   searchResult: Search[];
@@ -76,6 +66,10 @@ function Search({ searchResult }: Props) {
           {searchResult.map((el) => (
             <InfoCard key={el.img} {...el} />
           ))}
+        </section>
+
+        <section className="hidden xl:inline-flex xl:min-w-[600px] ">
+          <Map searchResult={searchResult} />
         </section>
       </main>
       <Footer />
