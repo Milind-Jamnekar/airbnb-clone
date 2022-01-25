@@ -11,12 +11,12 @@ function SmallCard({
 }) {
   return (
     <div
-      className="flex  items-center mt-4 m-2 space-x-3 
+      className="flex  items-center mt-4 m-2 space-x-3 group 
     rounded-xl  cursor-pointer hover:bg-gray-100 hover:scale-105
     transition duration-200 ease-out"
     >
       {/* Left */}
-      <div className="relative w-16 h-16 sm:w-14 sm:h-14">
+      <div className="relative w-16 h-16 sm:w-14 sm:h-14 transition-transform group-hover:scale-75">
         <Image
           src={img}
           layout="fill"
