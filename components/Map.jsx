@@ -40,7 +40,7 @@ export default function Map({ searchResult }) {
               role="img"
               className="stroke-white fill-red-600 cursor-pointer"
               aria-label="push-in"
-              onClick={}={() => setSelectedLocation(el)}
+              onClick={() => setSelectedLocation(el)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
