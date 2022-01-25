@@ -1,24 +1,10 @@
 import { useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import getCenter from "geolib/es/getCenter";
-import type { Search } from "../utility/type";
 
-type Viewport = {
-  latitude: number | false;
-  longitude: number | false;
-  zoom: number;
-};
+export default function Map({ searchResult }) {
+  const [selectedLocation, setSelectedLocation] = useState({});
 
-type Props = {
-  searchResult: Search[];
-};
-
-type Cords = {
-  latitude: number;
-  longitude: number;
-}[];
-
-export default function Map({ searchResult }: Props) {
   const coordinates = searchResult.map((el) => ({
     latitude: el.lat,
     longitude: el.long,
@@ -39,17 +25,23 @@ export default function Map({ searchResult }: Props) {
       {...viewport}
       width="100%"
       height="100%"
-      onViewportChange={(nextViewport: Viewport) => setViewport(nextViewport)}
+      onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
-      {searchResult.map((el) => (
-        <div>
+      {searchResult.map((el, i) => (
+        <div key={el.lat}>
           <Marker
+            key={`marker-${i}`}
             latitude={el.lat}
             longitude={el.long}
             offsetLeft={-20}
             offsetTop={-20}
           >
-            <div className="stroke-white fill-red-600">
+            <p
+              role="img"
+              className="stroke-white fill-red-600 cursor-pointer"
+              aria-label="push-in"
+              onClick={}={() => setSelectedLocation(el)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 fill-red-400 stroke-white animate-bounce"
@@ -70,8 +62,23 @@ export default function Map({ searchResult }: Props) {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-            </div>
+            </p>
           </Marker>
+
+          {selectedLocation.lat === el.lat ? (
+            <Popup
+              tipSize={5}
+              anchor="top"
+              onClose={setSelectedLocation({})}
+              closeOnClick={true}
+              latitude={el.lat}
+              longitude={el.long}
+            >
+              {el.title}
+            </Popup>
+          ) : (
+            false
+          )}
         </div>
       ))}
     </ReactMapGL>
