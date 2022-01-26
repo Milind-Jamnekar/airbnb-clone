@@ -26,7 +26,9 @@ const InfoCard: FC<IProps["Search"]> = ({
   total,
   long,
   lat,
-}: Search) {
+}) => {
+  const [active, setActive] = useState(false);
+
   return (
     <div className="flex py-7 px-4 border-b cursor-pointer hover:opacity-90 hover:shadow-lg transition-all ease-out first:border-t rounded-2xl ">
       <div className="relative w-40 h-24 md:h-52 md:w-80 flex-shrink-0 ">
