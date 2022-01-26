@@ -17,7 +17,7 @@ type Props = {
 };
 
 function Header({ placeholder }: Props) {
-  const [searchInput, setSearchInput] = useState<string>("");
+  const [searchInput, setSearchInput] = useState("");
 
   const router = useRouter();
 

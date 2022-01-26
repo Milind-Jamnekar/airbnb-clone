@@ -9,28 +9,24 @@ import MediumCard from "../components/MediumCard";
 import SmallCard from "../components/SmallCard";
 import { page } from "../utility/animation";
 import { getData } from "../utility/getData";
-interface Data {
-  img: string;
-  location: string;
-  distance: string;
-}
 
-interface CardData {
-  img: string;
-  title: string;
-}
-
-type Props = {
-  exploredData: {
+interface IProps {
+  Data: {
     img: string;
     location: string;
     distance: string;
-  }[];
-  cardData: {
+  };
+
+  CardData: {
     img: string;
     title: string;
-  }[];
-};
+  };
+}
+
+interface Props {
+  exploredData: IProps["Data"][];
+  cardData: IProps["CardData"][];
+}
 
 export default function Home({ exploredData, cardData }: Props) {
   return (
@@ -89,8 +85,12 @@ export default function Home({ exploredData, cardData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const exploredData: Data[] = await getData("https://links.papareact.com/pyp");
-  const cardData: CardData[] = await getData("https://links.papareact.com/zp1");
+  const exploredData: IProps["Data"] = await getData(
+    "https://links.papareact.com/pyp"
+  );
+  const cardData: IProps["CardData"] = await getData(
+    "https://links.papareact.com/zp1"
+  );
   return {
     props: {
       exploredData,
