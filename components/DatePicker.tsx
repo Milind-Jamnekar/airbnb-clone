@@ -2,7 +2,7 @@ import { UserIcon } from "@heroicons/react/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import { datePicker, calender } from "../utility/animation";
+import { datePicker } from "../utility/animation";
 // @ts-ignore
 //Date Picker Lib
 import { DateRangePicker, DateRange } from "react-date-range";
