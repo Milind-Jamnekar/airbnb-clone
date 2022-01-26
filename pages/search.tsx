@@ -53,8 +53,11 @@ function Search({ searchResult }: Props) {
           <p className="text-sm">
             Stays - {range} for {noOfGuest} of guests
           </p>
-          <h1 className="text-3xl font-semibold  mt-2 mb-6">
-            Stays in {location}
+          <h1 className="text-3xl font-semibold md:mb-6 md:mt-1">
+            Stays in{" "}
+            <span className="underline decoration-air-100 decoration-4">
+              {location}
+            </span>
           </h1>
           <div className="hidden md:inline-flex mb-3 space-x-3 whitespace-nowrap">
             <p className="tag">Cancellation Flexibility</p>
