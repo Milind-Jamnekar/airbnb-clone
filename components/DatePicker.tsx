@@ -20,6 +20,7 @@ export const DatePicker = ({ searchInput, setSearchInput }: Props) => {
   const [endDate, setEndDate] = useState(new Date());
   const [guest, setGuest] = useState<number>(1);
   const router = useRouter();
+  const isDeskop = useMediaQuery("(min-width: 960px)");
 
   //To explicitly select starting date
   const selectionRange = {
