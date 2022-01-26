@@ -43,10 +43,13 @@ const InfoCard: FC<IProps["Search"]> = ({
           className="rounded-2xl"
         />
       </div>
-      <div className="flex flex-col flex-grow pl-5 ">
-        <div className="flex justify-between">
-          <p>Private room in {location}</p>
-          <HeartIcon className="h-6" />
+      <div className="flex flex-col flex-grow px-3 xs:pl-5 ">
+        <div className="flex justify-between items-center text-gray-500 text-sm mt-4  md:my-0">
+          <p>{location}</p>
+          <HeartIcon
+            onClick={() => setActive(!active)}
+            className={`h-6 md:h-6  ${active && "fill-air-100 stroke-air-100"}`}
+          />
         </div>
         <h4 className="text-2xl">{title}</h4>
         <span className="border-b-2 w-10 pt-2"></span>
