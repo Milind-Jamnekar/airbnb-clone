@@ -63,9 +63,11 @@ function Search({ searchResult }: Props) {
             <p className="tag">More Filter </p>
           </div>
 
-          {searchResult.map((el) => (
-            <InfoCard key={el.img} {...el} />
-          ))}
+          <div className="my-10 space-y-8">
+            {searchResult.map((el) => (
+              <InfoCard key={el.img} {...el} />
+            ))}
+          </div>
         </section>
 
         <section className="hidden xl:inline-flex xl:min-w-[600px] ">
