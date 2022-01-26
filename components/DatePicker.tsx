@@ -83,6 +83,27 @@ export const DatePicker = ({ searchInput, setSearchInput }: Props) => {
           className="w-12 pl-2 outline-none text-red-500"
         />
       </div>
+        </div>
+      ) : (
+        <div className="mt-3 select-none">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={datePicker}
+          >
+            <DateRange
+              date={new Date()}
+              minDate={new Date()}
+              ranges={[selectionRange]}
+              editableDateInputs={true}
+              onChange={handleSelect}
+              moveRangeOnFirstSelection={false}
+              rangeColors={["#fd5b21"]}
+            />
+          </motion.div>
+        </div>
+      )}
       <div className="flex gap-5 mt-2">
         <button
           onClick={resetInput}
