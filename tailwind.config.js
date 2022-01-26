@@ -10,6 +10,13 @@ module.exports = {
       xs: "475px",
       ...defaultTheme.screens,
     },
+    extend: {
+      colors: {
+        air: {
+          100: "#fd5b21",
+        },
+      },
+    },
   },
   plugins: [],
 };
