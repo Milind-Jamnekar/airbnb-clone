@@ -25,7 +25,7 @@ function Header({ placeholder }: Props) {
     setSearchInput(e.target.value);
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 ">
+    <header className="sticky top-0 py-4 z-50 grid grid-cols-4 bg-white shadow-md p-2 md:px-10 ">
       {/* Left logo */}
       <div
         onClick={() => router.push("/")}

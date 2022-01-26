@@ -48,12 +48,16 @@ function Search({ searchResult }: Props) {
       </Head>
       <Header placeholder={`${location} | ${noOfGuest} Guests`} />
       <main className="flex">
+        {/* left infocard section  */}
         <section className="flex-grow mt-14 mx-6">
           <p className="text-sm">
             Stays - {range} for {noOfGuest} of guests
           </p>
-          <h1 className="text-3xl font-semibold  mt-2 mb-6">
-            Stays in {location}
+          <h1 className="text-3xl font-semibold md:mb-6 md:mt-1">
+            Stays in{" "}
+            <span className="underline decoration-air-100 decoration-4">
+              {location}
+            </span>
           </h1>
           <div className="hidden md:inline-flex mb-3 space-x-3 whitespace-nowrap">
             <p className="tag">Cancellation Flexibility</p>
@@ -63,11 +67,14 @@ function Search({ searchResult }: Props) {
             <p className="tag">More Filter </p>
           </div>
 
-          {searchResult.map((el) => (
-            <InfoCard key={el.img} {...el} />
-          ))}
+          <div className="my-10 space-y-8">
+            {searchResult.map((el) => (
+              <InfoCard key={el.img} {...el} />
+            ))}
+          </div>
         </section>
 
+        {/* map section  */}
         <section className="hidden xl:inline-flex xl:min-w-[600px] ">
           <Map searchResult={searchResult} />
         </section>
