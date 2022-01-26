@@ -48,6 +48,7 @@ function Search({ searchResult }: Props) {
       </Head>
       <Header placeholder={`${location} | ${noOfGuest} Guests`} />
       <main className="flex">
+        {/* left infocard section  */}
         <section className="flex-grow mt-14 mx-6">
           <p className="text-sm">
             Stays - {range} for {noOfGuest} of guests
@@ -70,6 +71,7 @@ function Search({ searchResult }: Props) {
           </div>
         </section>
 
+        {/* map section  */}
         <section className="hidden xl:inline-flex xl:min-w-[600px] ">
           <Map searchResult={searchResult} />
         </section>
