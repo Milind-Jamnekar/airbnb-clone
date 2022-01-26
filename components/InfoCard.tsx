@@ -51,24 +51,26 @@ const InfoCard: FC<IProps["Search"]> = ({
             className={`h-6 md:h-6  ${active && "fill-air-100 stroke-air-100"}`}
           />
         </div>
-        <h4 className="text-2xl">{title}</h4>
-        <span className="border-b-2 w-10 pt-2"></span>
-        <p className="pt-2 text-sm text-gray-500 flex-grow">{description}</p>
+        <h4 className="text-2xl font-medium">{title}</h4>
+        <span className="border-b-2 border-air-100 w-12 md:w-24 pt-2"></span>
+        <p className="mt-5 text-sm text-gray-600 flex-grow">{description}</p>
 
         <div className="flex justify-between items-end pt-5">
-          <p className="flex gap-1 items-center">
-            <StarIcon className="h-5 text-red-400" />
-            <span className="pb-1">{star}</span>
+          <p className="flex gap-2 items-center">
+            <StarIcon className="h-5 text-air-100" />
+            <span className="md:pb-1">{star}</span>
           </p>
 
           <div>
-            <p className="text-lg lg:text-2xl lg:font-semibold pb-2">{price}</p>
+            <p className="text-lg font-medium lg:text-2xl lg:font-semibold md:pb-2 underline underline-offset-1 decoration-air-100">
+              {price}
+            </p>
             <p className="text-right font-extralight">{total}</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InfoCard;
