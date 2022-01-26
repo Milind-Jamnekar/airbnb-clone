@@ -41,6 +41,7 @@ const InfoCard: FC<IProps["Search"]> = ({
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
+          alt={`Image of ${title}`}
         />
       </div>
       <div className="flex flex-col flex-grow px-3 xs:pl-5 ">
