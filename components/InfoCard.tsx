@@ -30,8 +30,12 @@ const InfoCard: FC<IProps["Search"]> = ({
   const [active, setActive] = useState(false);
 
   return (
-    <div className="flex py-7 px-4 border-b cursor-pointer hover:opacity-90 hover:shadow-lg transition-all ease-out first:border-t rounded-2xl ">
-      <div className="relative w-40 h-24 md:h-52 md:w-80 flex-shrink-0 ">
+    <div
+      className="flex flex-col xs:flex-row p-4 outline outline-gray-200 md:outline-none md:p-6 
+    border-b  hover:opacity-90 hover:shadow-lg transition-all
+    ease-out first:border-t rounded-3xl "
+    >
+      <div className="relative h-44 xs:w-52 xs:h-80 sm:h-52 sm:w-80 flex-shrink-0 ">
         <Image
           src={img}
           layout="fill"
