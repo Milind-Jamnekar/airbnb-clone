@@ -1,19 +1,22 @@
 import { HeartIcon, StarIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import { FC, useState } from "react";
 
-type Search = {
-  img: string;
-  location: string;
-  title: string;
-  description: string;
-  star: number;
-  price: string;
-  total: string;
-  long: number;
-  lat: number;
-};
+interface IProps {
+  Search: {
+    img: string;
+    location: string;
+    title: string;
+    description: string;
+    star: number;
+    price: string;
+    total: string;
+    long: number;
+    lat: number;
+  };
+}
 
-function InfoCard({
+const InfoCard: FC<IProps["Search"]> = ({
   img,
   location,
   title,
