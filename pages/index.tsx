@@ -39,6 +39,33 @@ export default function Home({ exploredData, cardData }: Props) {
     >
       <Head>
         <title>Airbnb Clone</title>
+        <meta name="theme-color" content="#fd5b21"></meta>
+        <title>Kent C. Dodds</title>
+        <meta
+          name="description"
+          content="Not sure where to go Perfect! have search on airbnb"
+        />
+        <meta
+          property="og:url"
+          content="https://airbnb-milind-jamnekar.vercel.app"
+        />
+        <meta property="og:title" content="Airbnb Clone"></meta>
+        <meta
+          property="og:description"
+          content="Airbnb Clone created by Milind Jamnekar. This used on educational purpose only"
+        ></meta>
+        <meta property="og:image" content=""></meta>
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:creator" content="@Milind-jamnekar"></meta>
+        <meta name="twitter:site" content="@Milind-jamnekar"></meta>
+        <meta name="twitter:title" content="Milind Jamnekar"></meta>
+        <meta
+          name="twitter:description"
+          content="Airbnb Clone created by Milind Jamnekar. This used on educational purpose only"
+        ></meta>
+        <meta name="twitter:image" content=""></meta>
+        <meta name="twitter:alt" content="Milind Jamekar"></meta>
+        <link rel="canonical" href="https://kentcdodds.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header  */}
