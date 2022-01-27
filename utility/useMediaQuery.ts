@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 
+/**
+ *
+ * @param query Enter the media query used in css
+ * @returns Boolean
+ */
 export default function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
 
