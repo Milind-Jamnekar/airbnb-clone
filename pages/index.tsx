@@ -40,7 +40,7 @@ export default function Home({ exploredData, cardData }: Props) {
       <Head>
         <title>Airbnb Clone</title>
         <meta name="theme-color" content="#fd5b21"></meta>
-        <title>Kent C. Dodds</title>
+        <title>Airbnb Clone</title>
         <meta
           name="description"
           content="Not sure where to go Perfect! have search on airbnb"
